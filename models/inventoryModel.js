@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-    name: {type: String, required:true},
-    email: {
+const InventorySchema = new mongoose.Schema({
+    username: {type: String, required:true},
+    userEmail: {
         type: String,
         required: true,
         unique:true,
@@ -13,10 +13,13 @@ const UserSchema = new mongoose.Schema({
           message: props => `${props.value} is not a valid email!`
         }
       },
-    password: String,
+    productName: {type:String, required: true},
+    productQuantity: {type: Number, required:true},
+    productPrice: {type:Number, required:true}
+
    
 })
 
-const model = mongoose.model("user", UserSchema)
+const model = mongoose.model("user", InventorySchema)
 
 module.exports = model;

@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const connectDB = require("./db/db")
 const cors = require("cors");
-const userRoutes = require("./routes/userRoute")
+const mainRoute = require("./routes/main")
 
 const PORT = process.env.PORT || 5000
 
@@ -17,8 +17,10 @@ app.use(bodyParser.json())
 connectDB()
 
 //Routes
-app.use("/api", userRoutes);
+app.use("/", mainRoute);
 
+
+// running the server on home route
 app.get("/", (req, res) =>{
     res.send("Server is running on properly")
 })
